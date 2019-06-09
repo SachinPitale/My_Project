@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: webapplication-rep
+spec:
+  replicas: 2
+  selector:
+    app: webapp
+  template:
+    metadata:
+      name: Pod-webapplication
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: webapp-container
+          image: sachinpitale22/web_application
+          ports:
+            - containerPort: 8080 
+
