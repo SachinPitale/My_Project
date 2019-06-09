@@ -1,0 +1,12 @@
+---
+- hosts: webserver
+  become: yes
+  tasks:
+    - name: To download file from Github
+      git:
+        repo: https://github.com/SachinPitale/My_Project.git
+        dest: /opt/My_Project
+    - name: To run the web application
+      command: kubectl apply -f /opt/My_Project/Web_application-replication.yml
+    - name: To run the web application service
+      command: kubectl apply -f /opt/My_Project/Web_application-service.yml 
